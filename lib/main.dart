@@ -14,6 +14,7 @@ Future<void> main() async {
     blocObserver: AppBlocObserver(),
   );
   runApp(MyApp());
+  // TodosDatabase.instance.close();
 }
 
 class MyApp extends StatelessWidget {

@@ -10,7 +10,7 @@ class TodoCreateBloc extends Bloc<TodoCreateEvent, TodoCreateState> {
   void _onSubmit(TodoCreateSubmitEvent event, Emitter emit) async {
     try {
       emit(TodoCreateLoading());
-      await TodosDatabase.instance.create(event.todo);
+      TodosDatabase.instance.create(event.todo);
       emit(TodoCreateLoaded());
       await Future.delayed(Duration(seconds: 1));
       emit(TodoCreateShowNotification());

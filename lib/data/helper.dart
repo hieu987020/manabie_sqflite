@@ -13,19 +13,43 @@ class TodosDatabase {
     if (_database != null) return _database!;
 
     _database = await _initDB('todos.db');
-    Todo todo = Todo(
-      name: 'Todo A',
-      detail: 'Detail A',
+    TodosDatabase.instance.deleteAll();
+    await TodosDatabase.instance.create(Todo(
+      name: 'TodoA',
+      detail: 'Listen to music',
       date: DateTime.now().toIso8601String(),
-    );
-    await _database!.insert(tableTodos, todo.toMap());
+    ));
+    await TodosDatabase.instance.create(Todo(
+      name: 'TodoB',
+      detail: 'Clean house',
+      date: DateTime.now().toIso8601String(),
+    ));
+    await TodosDatabase.instance.create(Todo(
+      name: 'TodoC',
+      detail: 'Go to school early',
+      date: DateTime.now().toIso8601String(),
+    ));
+    await TodosDatabase.instance.create(Todo(
+        name: 'TodoD',
+        detail: 'Eat breakfast with friend at big C',
+        date: DateTime.now().toIso8601String(),
+        status: 'Complete'));
+    await TodosDatabase.instance.create(Todo(
+        name: 'TodoE',
+        detail: 'Sleep 100000 seconds',
+        date: DateTime.now().toIso8601String(),
+        status: 'Complete'));
+    await TodosDatabase.instance.create(Todo(
+        name: 'TodoF',
+        detail: 'playing game',
+        date: DateTime.now().toIso8601String(),
+        status: 'Complete'));
     return _database!;
   }
 
   Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
-
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
@@ -47,15 +71,6 @@ CREATE TABLE $tableTodos (
 
   Future<Todo> create(Todo todo) async {
     final db = await instance.database;
-
-    // final json = note.toJson();
-    // final columns =
-    //     '${NoteFields.title}, ${NoteFields.description}, ${NoteFields.time}';
-    // final values =
-    //     '${json[NoteFields.title]}, ${json[NoteFields.description]}, ${json[NoteFields.time]}';
-    // final id = await db
-    //     .rawInsert('INSERT INTO table_name ($columns) VALUES ($values)');
-
     final id = await db.insert(tableTodos, todo.toMap());
     todo.id = id;
     return todo;
@@ -106,6 +121,13 @@ CREATE TABLE $tableTodos (
     );
   }
 
+  Future<int> deleteAll() async {
+    final db = await instance.database;
+    // final result = await db.rawQuery(
+    //   'DELETE FROM $tableTodos',
+    // );
+    return db.delete(tableTodos);
+  }
   // Future<int> delete(int id) async {
   //   final db = await instance.database;
 

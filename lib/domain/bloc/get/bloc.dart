@@ -11,39 +11,6 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   void _onFetch(TodoFetchEvent event, Emitter<TodoState> emit) async {
     try {
       emit(TodoLoading());
-      // List<Todo> checked = await TodosDatabase.instance.readAll('');
-      // if (checked.isEmpty) {
-      //   await TodosDatabase.instance.create(Todo(
-      //     name: 'TodoA',
-      //     detail: 'Todo A',
-      //     date: DateTime.now().toIso8601String(),
-      //   ));
-      // }
-      // await TodosDatabase.instance.create(Todo(
-      //   name: 'TodoB',
-      //   detail: 'Todo B',
-      //   date: DateTime.now().toIso8601String(),
-      // ));
-      // await TodosDatabase.instance.create(Todo(
-      //   name: 'TodoC',
-      //   detail: 'Todo C',
-      //   date: DateTime.now().toIso8601String(),
-      // ));
-      // await TodosDatabase.instance.create(Todo(
-      //     name: 'TodoD',
-      //     detail: 'Todo D',
-      //     date: DateTime.now().toIso8601String(),
-      //     status: 'Complete'));
-      // await TodosDatabase.instance.create(Todo(
-      //     name: 'TodoE',
-      //     detail: 'Todo E',
-      //     date: DateTime.now().toIso8601String(),
-      //     status: 'Complete'));
-      // await TodosDatabase.instance.create(Todo(
-      //     name: 'TodoF',
-      //     detail: 'Todo F',
-      //     date: DateTime.now().toIso8601String(),
-      //     status: 'Complete'));
       List<Todo> result = await TodosDatabase.instance.readAll(event.status);
       emit(TodoFetchSuccess(result));
     } catch (e) {
@@ -80,7 +47,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
         emit(TodoUpdateFailure());
       }
     } catch (e) {
-      emit(TodoFetchError());
+      emit(TodoUpdateFailure());
     }
   }
 }
