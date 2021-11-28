@@ -2,19 +2,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:manabie_todoapp/domain/domains.dart';
-import 'package:manabie_todoapp/presentasion/home_page/home_page.dart';
+import 'package:manabie_todoapp/presentation/presentations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  BlocOverrides.runZoned(
-    () {
-      // Use cubits...
-      //TodoBloc();
-    },
-    blocObserver: AppBlocObserver(),
-  );
+  // BlocOverrides.runZoned(
+  //   () {
+  //     // Use cubits...
+  //     //TodoBloc();
+  //   },
+  //   blocObserver: AppBlocObserver(),
+  // );
   runApp(MyApp());
-  // TodosDatabase.instance.close();
 }
 
 class MyApp extends StatelessWidget {

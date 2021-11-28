@@ -12,6 +12,14 @@ Future<void> main() async {
   );
   todos.add(todo);
   group('Todo Bloc', () {
+    late TodoBloc todoBloc;
+    setUp(() {
+      todoBloc = TodoBloc();
+    });
+    test('initial state is TodoInitialState()', () {
+      expect(todoBloc.state, TodoInitialState());
+    });
+
     blocTest<TodoBloc, TodoState>(
       'emits [] when nothing is added',
       build: () => TodoBloc(),

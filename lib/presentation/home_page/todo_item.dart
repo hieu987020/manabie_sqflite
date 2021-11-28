@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:manabie_todoapp/data/data.dart';
 import 'package:manabie_todoapp/domain/bloc/blocs.dart';
 
-class TodoPage extends StatefulWidget {
-  const TodoPage({
+class TodoItem extends StatefulWidget {
+  const TodoItem({
     Key? key,
     required this.selectedIndex,
   }) : super(key: key);
   final int selectedIndex;
 
   @override
-  State<TodoPage> createState() => _TodoPageState();
+  State<TodoItem> createState() => _TodoItemState();
 }
 
-class _TodoPageState extends State<TodoPage> {
+class _TodoItemState extends State<TodoItem> {
   @override
   Widget build(BuildContext context) {
     var state = BlocProvider.of<TodoBloc>(context).state;
@@ -83,76 +83,4 @@ class _TodoPageState extends State<TodoPage> {
       ),
     );
   }
-
-  // confirmDialog(BuildContext context) {
-  //   return showDialog(
-  //     context: context,
-  //     builder: (_) => Dialog(
-  //       // backgroundColor: Colors.transparent,
-  //       child: Container(
-  //         alignment: FractionalOffset.center,
-  //         height: 250,
-  //         padding: const EdgeInsets.all(20.0),
-  //         child: Column(
-  //           children: [
-  //             Row(
-  //               children: [
-  //                 Container(
-  //                   alignment: Alignment.center,
-  //                   child: Text(
-  //                     'Finish this task?',
-  //                     style: TextStyle(
-  //                       fontSize: 25,
-  //                       fontWeight: FontWeight.bold,
-  //                     ),
-  //                     textAlign: TextAlign.center,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //             Row(
-  //               mainAxisAlignment: MainAxisAlignment.end,
-  //               children: [
-  //                 Container(
-  //                   height: 50,
-  //                   width: 100,
-  //                   decoration: BoxDecoration(color: Colors.blue),
-  //                   child: TextButton(
-  //                     child: Text(
-  //                       'Yes',
-  //                       style: TextStyle(
-  //                         color: Colors.white,
-  //                         fontSize: 20,
-  //                         fontWeight: FontWeight.bold,
-  //                       ),
-  //                     ),
-  //                     onPressed: () {},
-  //                   ),
-  //                 ),
-  //                 Container(
-  //                   height: 50,
-  //                   width: 100,
-  //                   decoration: BoxDecoration(color: Colors.grey),
-  //                   child: TextButton(
-  //                     child: Text(
-  //                       'No',
-  //                       style: TextStyle(
-  //                         color: Colors.white,
-  //                         fontSize: 20,
-  //                         fontWeight: FontWeight.bold,
-  //                       ),
-  //                     ),
-  //                     onPressed: () {
-  //                       Navigator.pop(context);
-  //                     },
-  //                   ),
-  //                 ),
-  //               ],
-  //             )
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 }

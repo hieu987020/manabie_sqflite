@@ -24,13 +24,25 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       emit(TodoLoading());
       Todo? todo = event.todo;
       if (todo != null) {
-        Todo newTodo = todo;
-        newTodo.status == 'Complete'
-            ? newTodo.status = 'Incomplete'
-            : newTodo.status = 'Complete';
-        newTodo.date = DateTime.now().toIso8601String();
-        print(DateTime.now().toIso8601String());
-        int check = await TodosDatabase.instance.update(todo);
+        Todo newTodo;
+        if (todo.status.contains('Complete')) {
+          newTodo = Todo(
+            id: todo.id,
+            name: todo.name,
+            detail: todo.detail,
+            status: 'Incomplete',
+            date: DateTime.now().toIso8601String(),
+          );
+        } else {
+          newTodo = Todo(
+            id: todo.id,
+            name: todo.name,
+            detail: todo.detail,
+            status: 'Complete',
+            date: DateTime.now().toIso8601String(),
+          );
+        }
+        int check = await TodosDatabase.instance.update(newTodo);
         if (check == 1) {
           String status = '';
           if (event.indexPage == 1) {

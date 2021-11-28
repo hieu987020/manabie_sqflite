@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:manabie_todoapp/domain/bloc/blocs.dart';
-import 'package:manabie_todoapp/presentasion/create_page/create_pages.dart';
-import 'package:manabie_todoapp/presentasion/home_page/home_pages.dart';
+import 'package:manabie_todoapp/presentation/presentations.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -100,7 +99,7 @@ class _HomePageState extends State<HomePage> {
         body: BlocBuilder<TodoBloc, TodoState>(
           builder: (context, state) {
             if (state is TodoFetchSuccess) {
-              return TodoPage(
+              return TodoItem(
                 selectedIndex: _selectedIndex,
               );
             } else if (state is TodoFetchError) {

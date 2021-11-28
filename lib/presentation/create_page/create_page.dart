@@ -14,6 +14,7 @@ class _CreateTaskState extends State<CreateTask> {
 
   TextEditingController _name = new TextEditingController();
   TextEditingController _detail = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<TodoCreateBloc, TodoCreateState>(
@@ -69,7 +70,6 @@ class _CreateTaskState extends State<CreateTask> {
                 ),
                 SizedBox(height: 15),
                 Container(
-                  width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(10),
@@ -96,7 +96,7 @@ class _CreateTaskState extends State<CreateTask> {
                       }
                     },
                   ),
-                )
+                ),
               ],
             ),
           ),

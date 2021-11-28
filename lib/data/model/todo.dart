@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 final String tableTodos = 'todos';
 
 class TodoFields {
@@ -13,13 +15,14 @@ class TodoFields {
   static final String date = 'date';
 }
 
-class Todo {
-  int id = 0;
-  String name;
-  String detail;
-  String status;
-  String date;
+class Todo extends Equatable {
+  final int? id;
+  final String name;
+  final String detail;
+  final String status;
+  final String date;
   Todo({
+    this.id,
     required this.name,
     required this.detail,
     this.status = "Incomplete",
@@ -35,5 +38,32 @@ class Todo {
 
   Map<String, Object?> toMap() {
     return {'name': name, 'detail': detail, 'status': status, 'date': date};
+  }
+
+  @override
+  List<Object?> get props {
+    return [
+      id,
+      name,
+      detail,
+      status,
+      date,
+    ];
+  }
+
+  Todo copyWith({
+    int? id,
+    String? name,
+    String? detail,
+    String? status,
+    String? date,
+  }) {
+    return Todo(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      detail: detail ?? this.detail,
+      status: status ?? this.status,
+      date: date ?? this.date,
+    );
   }
 }

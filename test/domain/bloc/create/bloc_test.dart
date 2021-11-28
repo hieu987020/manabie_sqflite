@@ -19,7 +19,7 @@ void main() {
   todos.add(todo);
   // todos.add(todoB);
 
-  group('TodoCreate Bloc', () {
+  group('Todo Create Bloc', () {
     blocTest<TodoCreateBloc, TodoCreateState>(
       'emits [] when nothing is added',
       build: () => TodoCreateBloc(),
@@ -38,7 +38,6 @@ void main() {
       act: (bloc) => bloc.add(TodoCreateSubmitEvent(todo: todo)),
       skip: 1,
       expect: () => [TodoCreateError()],
-      // expect: () => [],
     );
   });
 }

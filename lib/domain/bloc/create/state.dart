@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:manabie_todoapp/data/data.dart';
 
 abstract class TodoCreateState extends Equatable {
   const TodoCreateState();
@@ -14,4 +15,8 @@ class TodoCreateLoading extends TodoCreateState {}
 
 class TodoCreateError extends TodoCreateState {}
 
-class TodoCreateShowNotification extends TodoCreateState {}
+class TodoCreateShowNotification extends TodoCreateState {
+  final Todo todo;
+
+  TodoCreateShowNotification(this.todo);
+}

@@ -72,8 +72,13 @@ CREATE TABLE $tableTodos (
   Future<Todo> create(Todo todo) async {
     final db = await instance.database;
     final id = await db.insert(tableTodos, todo.toMap());
-    todo.id = id;
-    return todo;
+    return Todo(
+      id: id,
+      name: todo.name,
+      detail: todo.detail,
+      status: todo.status,
+      date: todo.date,
+    );
   }
 
   Future<Todo> readNote(int id) async {
