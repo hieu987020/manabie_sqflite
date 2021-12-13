@@ -156,3 +156,12 @@ CREATE TABLE $tableTodos (
   }
 }
 ```
+### Development
+```
+[√] Flutter (Channel stable, 2.5.3, on Microsoft Windows [Version 10.0.19043.1348], locale en-US)
+[√] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
+[√] Chrome - develop for the web
+[√] Android Studio (version 4.2)
+[√] VS Code (version 1.63.0)
+[√] Connected device (3 available)
+```
